@@ -970,105 +970,114 @@ body.article-page .top-nav {
 
 
 /* ======================================================= */
-/* 📱 MOBILE RESPONSIVENESS 📱               */
+/* 📱 MOBILE RESPONSIVENESS (PERFECTED FOR PHONES) 📱        */
 /* ======================================================= */
 
 @media (max-width: 768px) {
     
-    /* --- 1. Navigation Bar --- */
+    /* --- 1. Top Navigation & Hero --- */
     .top-nav {
-        flex-direction: column; /* Stacks logo and menu */
+        flex-direction: column;
         align-items: center;
-        padding: 15px 20px;
+        padding: 15px;
         gap: 15px;
     }
     
     .nav-menu {
-        flex-wrap: wrap; /* Allows menu items to wrap to next line if needed */
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
-        font-size: 0.9rem;
+        gap: 10px;
+        font-size: 0.85rem;
     }
 
-    /* --- 2. Article Reading Pages --- */
-    .article-main-title {
-        font-size: 1.8rem; /* Reduces massive titles */
-        line-height: 1.3;
+    .hero-text-area h1 {
+        font-size: 3rem; /* Shrink giant hero title on mobile */
+        text-align: center;
+    }
+    .hero-text-area {
+        align-items: center; /* Center the social icons */
+    }
+
+    /* --- 2. About Section (From Screenshot 1) --- */
+    .info-section {
+        flex-direction: column; /* Stacks the black boxes */
+        padding: 40px 20px; /* Reduce massive padding */
+        gap: 20px;
     }
     
-    .article-hero img {
-        height: 30vh; /* Reduces huge images on mobile */
+    .black-box {
+        padding: 30px 20px; /* Give the text more room to breathe */
+    }
+    
+    .black-box h2 {
+        font-size: 1.5rem; /* Shrink titles */
+    }
+    
+    .black-box p {
+        font-size: 0.95rem;
+        line-height: 1.4;
     }
 
-    /* --- 3. The "More Articles" Replica Grid --- */
-    .more-articles-grid {
-        grid-template-columns: 1fr; /* Stacks the two cards into one single column */
+    /* --- 3. Articles --- */
+    .article-section {
+        padding: 40px 20px;
     }
-
-    .more-article-card {
-        flex-direction: column; /* Stacks image on top of text */
-        gap: 0;
-    }
-
-    .card-image-wrapper {
-        flex: 0 0 180px; /* Makes image a bit taller for horizontal cards now that they are stacked */
-        border-radius: 10px 10px 0 0; /* Rounds only the top corners */
-    }
-
-    /* --- 4. The Parallax "Read More" Block --- */
+    
     .readmore-title {
-        padding: 40px 5%; /* Shrinks massive padding */
-        min-height: 60vh;
+        padding: 30px 20px;
     }
-
+    
     .article-title {
-        font-size: 1.8rem; /* Shrinks the giant text block */
+        font-size: 1.8rem; /* Stop text from overflowing the screen */
+        padding: 10px;
     }
 
-    /* --- 5. Mini Quiz Section --- */
+    /* --- 4. Quizzes (From Screenshot 3) --- */
     .quiz-options {
-        grid-template-columns: 1fr; /* Stacks the answer buttons on top of each other */
-        gap: 15px;
+        grid-template-columns: 1fr; /* Forces A, B, C, D to stack perfectly on top of each other */
+        gap: 10px;
     }
     
     .quiz-btn {
         padding: 15px;
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
-    /* --- 6. Mix & Match Game --- */
+    /* --- 5. Mix & Match (From Screenshot 2) --- */
     #mix-match-section {
         padding: 20px 15px 50px 15px;
     }
 
     .mix-container.new-layout {
-        flex-direction: column; /* Puts the Model on top of the Clothing Grid */
+        flex-direction: column; /* Puts the Model ON TOP of the Clothes */
         align-items: center;
         gap: 30px;
     }
 
     .mix-left-model {
         width: 100%;
-        max-width: 300px; /* Keeps the model from getting too huge */
+        max-width: 250px; /* Keeps the model from being way too tall on mobile */
+        margin: 0 auto;
     }
 
     .mix-right-outfits {
         width: 100%;
     }
 
-    /* --- 7. Toast Notifications --- */
-    .toast-notification {
-        width: 90%; /* Stops the toast from touching the edges of the screen */
-        max-width: 350px;
-        padding: 12px 16px;
+    .outfit-grid {
+        grid-template-columns: repeat(2, 1fr); /* Shows 2 items side-by-side instead of 3 */
         gap: 10px;
     }
 
-    .toast-content {
-        font-size: 0.85rem;
+    /* Make the pill menu scrollable if it's too wide */
+    .category-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
     }
 
-    .toast-content strong {
-        font-size: 0.95rem;
+    .category-btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
     }
 }
