@@ -1,0 +1,1074 @@
+html {
+    scroll-behavior: smooth;
+    
+    /* PRO-TIP: This prevents your fixed navbar from covering up the 
+       section titles when it finishes scrolling! */
+    scroll-padding-top: 90px; 
+}
+
+/* 1. Body & Global Styles */
+/* 1. Global Styles */
+body {
+    background-color: #626262; /* Solid background for the rest of the page */
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* 2. The Header (Background image goes back here!) */
+.main-header {
+    /* Put your exact image name here */
+    background-image: url('images/bg/image\ 2.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* (Keep your existing .top-nav, .nav-menu, .info-section, and .black-box CSS exactly as they are below this!) */
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background-color: rgba(0, 0, 0, 0.6); /* Adds the dark, transparent background back */
+    
+    /* The magic to make it follow you when you scroll: */
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    box-sizing: border-box; /* Ensures the padding doesn't stretch it off the screen */
+    z-index: 99999; /* Higher than the overlay */
+}
+
+.nav-menu {
+    display: flex;
+    gap: 40px; /* This is the magic number! Increase or decrease to change the spacing */
+    align-items: center;
+}
+
+/* Style the navigation links so they don't look like default blue links */
+.nav-menu a {
+    color: white; /* Keeps them white on the dark background */
+    text-decoration: none; /* Removes the underline */
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth fade when hovering */
+}
+
+/* Optional: Make them change color slightly when you hover over them */
+.nav-menu a:hover {
+    color: #cccccc; 
+}
+
+/* Specifically for the article page (Light Theme) */
+body.article-page .nav-menu a {
+    color: white; /* Ensures they stay white against the black navbar on the article page */
+}
+
+.nav-menu span {
+    margin-left: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Container holding both the logo and the text */
+.hero-content {
+    flex: 1;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    gap: 60px; /* Creates the space between the big logo and the text */
+    padding: 0 50px;
+}
+
+/* 1. Make the Logo Bigger */
+.hero-logo img {
+    width: 350px; /* INCREASED: Try changing this from 350px to 450px, 500px, etc. */
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); 
+}
+
+/* 2. Make the Title Text Bigger */
+.hero-text-area h1 {
+    font-size: 5rem; /* INCREASED: Try changing this from 3.5rem to 4.5rem, 5rem, or even 6rem */
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+.hero-text-area h1 {
+    font-size: 3.5rem; /* Makes the title nice and big */
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Helps the text stand out against the busy background */
+}
+
+/* Styling the social media row */
+.social-icons {
+    display: flex;
+    gap: 20px; /* Space between IG and TikTok icons */
+}
+
+.social-icons a img {
+    width: 50px; /* Adjust based on your icon image size */
+    height: 50px;
+    border-radius: 50%; /* Assuming the icons have black circular backgrounds */
+    transition: transform 0.2s ease; /* Smooth animation for hover */
+}
+
+/* Makes the icons grow slightly when you hover over them with a mouse */
+.social-icons a:hover img {
+    transform: scale(1.1);
+}
+
+/* Makes the main title big and white */
+.hero-content h1 {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Adds a slight shadow so it's easy to read over the images */
+}
+
+/* 3. Info Section (WHAT IS FLUI?) */
+.info-section {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the text boxes */
+
+    /* Put your exact image name here */
+    background-image: url('images/bg/image\ 2.png'); 
+    background-size: cover;
+    background-position: center;
+    
+    /* THE FIX: Changed from height to min-height */
+    min-height: 100vh; 
+}
+
+.info-section h2 {
+    background-color: black; /* Creates the black box */
+    color: white;
+    padding: 10px 20px;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.info-section p {
+    background-color: black; /* Creates the black box */
+    color: white;
+    padding: 20px;
+    max-width: 800px; /* Prevents the text from stretching too wide */
+    line-height: 1.6; /* Makes the text easier to read */
+    text-align: justify; /* Aligns the text neatly like a newspaper */
+}
+
+/* Let's make sure the images are spaced nicely and brought to the front */
+.works-images {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    position: relative;
+    z-index: 10; /* Guarantees nothing sits on top of them */
+    margin-top: 20px;
+}
+
+.works-images a {
+    text-decoration: none;
+    display: inline-block; 
+}
+
+/* Optional: Add a nice hover effect so users know it's clickable */
+.works-images a:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* --- 4. ARTICLE SECTION --- */
+
+/* The main container holding both articles */
+#article-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Base styling for both article blocks */
+.article-block {
+    width: 100%;
+    min-height: 80vh; /* Makes each block take up 80% of the screen height */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    padding: 60px; /* Gives nice spacing on the left and right */
+    box-sizing: border-box;
+}
+
+/* Specific background images for each block */
+.uss-bg {
+    background-image: url('images/bg/image\ 5.png'); /* UPDATE ME */
+}
+
+.jfw-bg {
+    background-image: url('images/bg/image\ 6.png'); /* UPDATE ME */
+}
+
+/* Styling the highlighted text blocks to match Figma */
+.article-content {
+    max-width: 900px;
+}
+
+.highlight-text {
+    background-color: black;
+    color: white;
+    padding: 5px 15px;
+    display: inline-block; /* This is what makes the box wrap tightly around the text */
+    margin-bottom: 5px; /* Creates the gap between lines */
+}
+
+.tag {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.article-title {
+    margin: 20px 0;
+    line-height: 1.6; /* Adds a little extra breathing room between headline rows */
+}
+
+.article-title .highlight-text {
+    font-size: 2.8rem;
+    padding: 10px 20px;
+}
+
+.author-info {
+    font-size: 0.9rem;
+    color: white;
+    margin-top: 15px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8); /* Ensures text is readable over busy backgrounds */
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: underline;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: #b3b3b3;
+}
+
+/* Forces the container to center its contents perfectly */
+.center-title-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px; /* Gives nice breathing room before the USS tag starts */
+    margin-top: 40px
+}
+
+/* Specific styling to make the ARTICLE text much bigger */
+.big-article-title {
+    background-color: black;
+    color: white;
+    font-size: 3.5rem; /* Makes it significantly larger */
+    padding: 10px 40px; /* Widens the black box */
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* --- 5. MINI QUIZ SECTION --- */
+
+.quiz-block {
+    width: 100%;
+    min-height: 80vh; /* Made slightly taller to match Figma proportions */
+    background-size: cover;
+    background-position: center;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+/* Backgrounds - Make sure these images are in your folder! */
+.bg-quiz-1 { background-image: url('images/bg/image\ 24.png'); background-color: #333; }
+.bg-quiz-2 { background-image: url('images/bg/image\ 27.png'); background-color: #222; }
+.bg-quiz-3 { background-image: url('images/bg/image\ 24.png'); background-color: #111; }
+
+/* The Dark Gradient Box matching Figma */
+.quiz-content {
+    background: linear-gradient(180deg, #5a5a5a 0%, #050505 100%);
+    border-radius: 20px;
+    padding: 30px 40px 40px 40px;
+    width: 100%;
+    max-width: 450px; /* Keeps the box narrow like the design */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Question Text & Divider Line */
+.quiz-content h3 {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* The thin line from Figma */
+    line-height: 1.4;
+}
+
+/* Stack options vertically */
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* White Buttons */
+.quiz-btn {
+    background-color: white;
+    color: black;
+    border: 3px solid transparent; 
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+/* The small radio circle inside the button */
+.quiz-btn::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.quiz-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* Glowing Effects (Triggered by JS) */
+.quiz-btn.correct {
+    border-color: #00ff00;
+    box-shadow: 0 0 15px #00ff00;
+}
+
+/* Fills the radio circle when correct */
+.quiz-btn.correct::before {
+    background-color: #00ff00;
+    border-color: #00ff00;
+}
+
+.quiz-btn.wrong {
+    border-color: #ff0000;
+    box-shadow: 0 0 15px #ff0000;
+}
+
+/* Fills the radio circle when wrong */
+.quiz-btn.wrong::before {
+    background-color: #ff0000;
+    border-color: #ff0000;
+}
+
+/* The Locked State UX */
+.locked {
+    pointer-events: none;
+}
+
+.locked .quiz-content {
+    filter: blur(8px);
+    opacity: 0.6;
+}
+
+.quiz-block.locked {
+    position: relative;
+    overflow: hidden; 
+}
+
+/* The Glassmorphism Lock Screen */
+/* 2. Adjust the Overlay to be high, but lower than the Nav */
+.locked-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* UPDATE THIS LINE: */
+    z-index: 5000; /* High, but less than 99999 */
+    
+    pointer-events: auto;
+    border-radius: 20px;
+}
+/* Style the lock text to match the second image */
+.locked-overlay h2 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the lock and the text */
+}
+
+/* Automatically hide the overlay when the Javascript removes the 'locked' class */
+.quiz-block:not(.locked) .locked-overlay {
+    display: none;
+}
+
+.quiz-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    z-index: 10;
+    display: none;
+}
+
+.locked .quiz-overlay {
+    display: flex;
+}
+
+/* Quiz Title Badge */
+.quiz-badge-container {
+    position: absolute;
+    top: 50px; /* Adjust this number to move it higher or lower */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.quiz-badge {
+    background-color: black;
+    color: white;
+    padding: 8px 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Optional: adds a nice drop shadow */
+}
+
+
+/* --- 6. MIX & MATCH SECTION (NEW SLEEK DESIGN) --- */
+
+/* --- 6. MIX & MATCH SECTION (NEW SLEEK DESIGN) --- */
+
+#mix-match-section {
+    position: relative; 
+    min-height: 800px;
+    
+    /* THE FIX: 15px on top, 0 on sides, 50px on bottom */
+    padding: 15px 0 50px 0; 
+    
+    /* Keeps the gradient background */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/bg/image\ 23.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* --- Centering the Mix & Match Header --- */
+
+/* 1. Target the outer container holding the title */
+.mix-header {
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 50px; 
+    padding-top: 0px; 
+    margin-top: 0px; /* Added this to strip away any default spacing! */
+}
+
+/* 2. Styling for the dark pill-shaped badge itself */
+.mix-title-badge {
+    background-color: #000000; /* Black background like the image */
+    padding: 10px 40px; /* Vertically small, horizontally wide padding for pill shape */
+    border-radius: 50px; /* makes it a perfect pill shape */
+    display: inline-block; /* ensures the background only covers the text width + padding */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Adds a subtle shadow for depth */
+}
+
+/* 3. Styling the text inside the badge */
+.mix-title-badge h2 {
+    color: #ffffff; /* White text */
+    margin: 0; /* removes default browser margins so it doesn't break centering */
+    font-size: 1.5rem; /* Adjust size as needed */
+    text-transform: uppercase; /* Makes it all caps */
+    letter-spacing: 2px; /* Slight spacing between letters for a modern look */
+    text-align: center; /* ensures text is centered if it wraps (unlikely here) */
+}
+
+.mix-container.new-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centers the content vertically */
+    gap: 80px; /* Bigger gap between model and clothes */
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* NEW: The Category Pill Menu */
+.category-menu {
+    background: #d3d3d3; /* Light grey pill */
+    border-radius: 40px;
+    display: inline-flex;
+    padding: 10px 20px;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.cat-btn {
+    background: #222222;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 15px 80px;
+    font-size: 1rem;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Matches the fun handwritten font in the image */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: inset -2px -2px 5px rgba(0,0,0,0.5);
+}
+
+.cat-btn:hover, .cat-btn.active {
+    background: #444444;
+    transform: scale(1.05);
+}
+
+/* NEW: Silver Bevel Model Zone */
+.silver-bevel {
+    position: relative;
+    width: 320px;
+    /* Creates the shiny silver metallic effect */
+    background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 50%, #999999 100%);
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 
+        inset 5px 5px 15px rgba(255, 255, 255, 0.8), /* Inner highlight */
+        inset -5px -5px 15px rgba(0, 0, 0, 0.2),    /* Inner shadow */
+        10px 10px 30px rgba(0, 0, 0, 0.6);          /* Drop shadow */
+}
+
+.base-model {
+    width: 100%;
+    height: auto;
+    border-radius: 20px; /* Optional: rounds the model image inside the silver frame */
+}
+
+/* --- FIXED LAYOUT & SHIFTING --- */
+.outfit-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px; /* Widened to perfectly fit 3 items across */
+    min-height: 500px; 
+    flex-shrink: 0; 
+}
+
+.outfit-grid-free {
+    display: grid; 
+    /* Strictly forces 3 columns and 2 rows */
+    grid-template-columns: repeat(3, 140px); 
+    grid-template-rows: repeat(2, 160px); 
+    gap: 20px; 
+    width: 460px; /* 140*3 + 20*2 = 460 */
+    justify-content: center;
+}
+
+/* The transparent placeholder that stops items from shifting */
+.cloth-slot {
+    width: 140px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.outfit-item {
+    width: 240px;
+    height: auto;
+    object-fit: contain;
+    cursor: grab;
+    transition: transform 0.2s;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5)); /* Adds shadow directly to the clothing shape! */
+}
+
+/* Keeps the dragged clothes styling */
+.freely-placed {
+    transform: scale(1.8);
+    position: absolute !important;
+    width: 160px;
+    height: auto;
+    z-index: 1000 !important;
+    cursor: grabbing;
+    pointer-events: auto;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6));
+}
+
+/* Carousel Arrows at the bottom */
+.carousel-arrows {
+    margin-top: 40px;
+    display: flex;
+    gap: 30px;
+}
+
+.arrow {
+    font-size: 2.5rem;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.arrow:hover {
+    transform: scale(1.3);
+}
+
+/* --- CATEGORY SLIDE ANIMATIONS --- */
+@keyframes slideInNext {
+    0% { transform: translateX(50px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInPrev {
+    0% { transform: translateX(-50px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+/* These classes will be applied by JavaScript */
+.slide-next {
+    animation: slideInNext 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.slide-prev {
+    animation: slideInPrev 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* --- LOCK SYSTEM STYLES --- */
+
+#mix-match-section.locked {
+    pointer-events: none;
+}
+
+#mix-match-section.locked .locked-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    pointer-events: auto;
+    border-radius: 20px;
+}
+
+#mix-match-section:not(.locked) .locked-overlay {
+    display: none;
+}
+
+.locked-overlay h2 {
+    color: white;
+    font-size: 2rem;
+}
+
+.mix-header {
+    width: 100%;
+    padding-top: 100px; /* Adjust this so it clears your top nav bar */
+    text-align: center; /* This centers inline elements */
+    margin-top: 60px;   /* Adds space from the section above */
+    margin-bottom: 40px;
+}
+
+.black-box {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 12px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    display: inline-block; /* CRITICAL: This allows 'text-align: center' to work */
+    border-radius: 4px;    /* Optional: slightly rounded corners like a real box */
+    text-transform: uppercase;
+}
+
+
+/* ========================================= */
+/* --- 7. ARTICLE PAGE SPECIFIC STYLES --- */
+/* ========================================= */
+
+/* Switch to Light Theme for reading */
+body.article-page {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Ensure the navbar background stays dark so text is readable */
+body.article-page .top-nav {
+    background-color: #000000; 
+}
+
+/* Push the hero image down so it doesn't hide behind the fixed navbar */
+.article-hero {
+    margin-top: 60px; /* Adjust this to match your navbar height */
+    width: 100%;
+    height: 60vh; /* Takes up 60% of screen height */
+    overflow: hidden;
+}
+
+.article-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps the image looking good without squishing */
+    object-position: center;
+}
+
+/* Center the text and make it look like a blog */
+.article-container {
+    max-width: 800px;
+    margin: 60px auto 100px auto; /* Centers it and adds space top/bottom */
+    padding: 0 30px;
+}
+
+/* The small "ARTICLE" black box */
+.article-badge {
+    background-color: #000000;
+    color: #ffffff;
+    display: inline-block;
+    padding: 8px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+/* The Big Headline */
+.article-main-title {
+    font-size: 2.8rem;
+    line-height: 1.3;
+    margin: 0 0 20px 0;
+    font-weight: 800;
+}
+
+/* Date and Author */
+.article-meta {
+    color: #666666;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eeeeee; /* Nice subtle line under the author */
+}
+
+/* The Reading Text */
+.article-body p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: #222222;
+    text-align: justify;
+}
+
+/* Images inside the article text */
+.article-inline-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0 40px 0; /* Space above and below the image */
+}
+
+/* Container for side-by-side images */
+.article-image-row {
+    display: flex;
+    gap: 20px; /* The space between the two images */
+    margin: 20px 0 40px 0; /* Matches the top/bottom spacing of your single images */
+}
+
+/* The images inside the row */
+.article-image-row img {
+    flex: 1; 
+    width: 100%; 
+    
+    /* ADD THESE TWO LINES: */
+    height: 250px; /* Forces both images to be exactly this tall */
+    max-height: 20vh; /* Ensures they don't take up more than 40% of small screens */
+    
+    border-radius: 8px; 
+    object-fit: cover; /* This is the magic! It perfectly crops the image to fit the 300px box without squishing or stretching it */
+}
+
+/* --- PROGRESS BAR --- */
+.scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px; /* Thickness of the bar */
+    background: rgba(255, 255, 255, 0.1); /* Faint background line */
+    z-index: 100000; /* Sits higher than the 99999 navbar */
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    background: #ffffff; /* White filling up. You can change this to #00ff00 for neon green! */
+    width: 0%;
+    transition: width 0.1s ease-out;
+}
+
+/* --- UNIFIED TOAST NOTIFICATIONS --- */
+.toast-notification {
+    position: fixed;
+    top: 50%; /* Moves it to the vertical middle of the screen */
+    left: 50%; /* Moves it to the horizontal middle of the screen */
+    
+    /* Hides it slightly above the center and makes it transparent */
+    transform: translate(-50%, -60%); 
+    opacity: 0;
+    visibility: hidden;
+    
+    background-color: #1a1a1a; /* Dark background */
+    border: 1px solid #4CAF50; /* Full green border */
+    border-radius: 12px;
+    padding: 50px 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.1); /* Stronger shadow for depth */
+    z-index: 999999; /* Ensure it's above EVERYTHING */
+    
+    display: flex; /* Aligns icon and text side-by-side */
+    align-items: flex-start;
+    gap: 15px; /* Space between icon and text */
+    
+    width: max-content;
+    max-width: 450px;
+    
+    /* Smooth transition for movement and fading */
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease, visibility 0.4s;
+}
+
+/* Class added by JS to show it in the dead center */
+.toast-notification.show {
+    transform: translate(-50%, -50%); /* Snaps to absolute dead center */
+    opacity: 1; /* Makes it fully visible */
+    visibility: visible;
+}
+
+/* --- MORE ARTICLES SECTION --- */
+#readmore-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.readmore-content {
+    padding: 60px 20px; /* Gives the text a little breathing room inside its box */
+}
+
+/* Base styling for both article blocks */
+.readmore-title {
+    width: 100%;
+    min-height: 80vh; 
+    /* Flexbox settings for layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: flex-start; /* Forces the text to stay neatly aligned to the left */
+    
+    /* --- THE MARGIN FIX --- */
+    /* 80px top/bottom, and 10% left/right. Using % ensures the margins look great on any screen size! */
+    padding: 80px 10%; 
+}
+
+/* Styling the Text */
+.article-title {
+    color: rgb(0, 0, 0); /* Keep your text color */
+    display: inline-block; 
+    padding: 10px 20px; /* Gives the text a little breathing room inside its box */
+    margin-bottom: 15px; /* Space between the text and the "Read More" button */
+    /* --- THE SIZE & SHAPE FIX --- */
+    font-size: 2.5rem; /* Adjust this number to make the text larger or smaller */
+    font-weight: bold; /* Makes it pop */
+    line-height: 1.5; /* Adjusts the vertical spacing between lines of text */
+    max-width: 800px; /* Stops the text from stretching all the way across the screen */
+}
+
+.author-readmore-info {
+    font-size: 0.9rem;
+    color: rgb(0, 0, 0);
+    margin-top: 15px;
+    padding: 10px 40px;
+}
+
+.jfw-readmore-bg {
+    background-image: url('images/bg/image\ 6.png'); /* UPDATE ME */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.uss-readmore-bg {
+    background-image: url('images/bg/image\ 5.png'); /* UPDATE ME */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.individual-article-readmore {
+    padding: 10px 40px;
+    display: inline-block;
+    margin-top: 30px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+
+/* ======================================================= */
+/* 📱 MOBILE RESPONSIVENESS 📱               */
+/* ======================================================= */
+
+@media (max-width: 768px) {
+    
+    /* --- 1. Navigation Bar --- */
+    .top-nav {
+        flex-direction: column; /* Stacks logo and menu */
+        align-items: center;
+        padding: 15px 20px;
+        gap: 15px;
+    }
+    
+    .nav-menu {
+        flex-wrap: wrap; /* Allows menu items to wrap to next line if needed */
+        justify-content: center;
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+
+    /* --- 2. Article Reading Pages --- */
+    .article-main-title {
+        font-size: 1.8rem; /* Reduces massive titles */
+        line-height: 1.3;
+    }
+    
+    .article-hero img {
+        height: 30vh; /* Reduces huge images on mobile */
+    }
+
+    /* --- 3. The "More Articles" Replica Grid --- */
+    .more-articles-grid {
+        grid-template-columns: 1fr; /* Stacks the two cards into one single column */
+    }
+
+    .more-article-card {
+        flex-direction: column; /* Stacks image on top of text */
+        gap: 0;
+    }
+
+    .card-image-wrapper {
+        flex: 0 0 180px; /* Makes image a bit taller for horizontal cards now that they are stacked */
+        border-radius: 10px 10px 0 0; /* Rounds only the top corners */
+    }
+
+    /* --- 4. The Parallax "Read More" Block --- */
+    .readmore-title {
+        padding: 40px 5%; /* Shrinks massive padding */
+        min-height: 60vh;
+    }
+
+    .article-title {
+        font-size: 1.8rem; /* Shrinks the giant text block */
+    }
+
+    /* --- 5. Mini Quiz Section --- */
+    .quiz-options {
+        grid-template-columns: 1fr; /* Stacks the answer buttons on top of each other */
+        gap: 15px;
+    }
+    
+    .quiz-btn {
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    /* --- 6. Mix & Match Game --- */
+    #mix-match-section {
+        padding: 20px 15px 50px 15px;
+    }
+
+    .mix-container.new-layout {
+        flex-direction: column; /* Puts the Model on top of the Clothing Grid */
+        align-items: center;
+        gap: 30px;
+    }
+
+    .mix-left-model {
+        width: 100%;
+        max-width: 300px; /* Keeps the model from getting too huge */
+    }
+
+    .mix-right-outfits {
+        width: 100%;
+    }
+
+    /* --- 7. Toast Notifications --- */
+    .toast-notification {
+        width: 90%; /* Stops the toast from touching the edges of the screen */
+        max-width: 350px;
+        padding: 12px 16px;
+        gap: 10px;
+    }
+
+    .toast-content {
+        font-size: 0.85rem;
+    }
+
+    .toast-content strong {
+        font-size: 0.95rem;
+    }
+}
