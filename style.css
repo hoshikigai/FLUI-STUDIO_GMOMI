@@ -1116,6 +1116,10 @@ body.article-page .top-nav {
         transform: scale(1.2);
     }
 
+    .pants-item.freely-placed {
+        width: 120px !important;
+    }
+
     /* ARROWS */
     .carousel-arrows {
         margin-top: 20px;
