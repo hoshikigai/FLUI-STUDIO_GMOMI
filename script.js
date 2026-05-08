@@ -80,59 +80,84 @@ document.addEventListener('DOMContentLoaded', () => {
 /* --- 6. MIX & MATCH LOGIC (FIXED POSITIONING) --- */
 document.addEventListener('DOMContentLoaded', () => {
     const draggables = document.querySelectorAll('.draggable-cloth');
-    const dropZone = document.getElementById('mix-match-section'); 
+    const dropZone = document.getElementById('mix-match-section');
 
     let activeItem = null;
     let offsetX = 0;
     let offsetY = 0;
 
-    draggables.forEach(item => {
-        item.addEventListener('dragstart', (e) => e.preventDefault());
+    function startDrag(item, clientX, clientY) {
+        if (dropZone.classList.contains('locked')) return;
 
-        item.addEventListener('mousedown', (e) => {
-            if (dropZone.classList.contains('locked')) return;
+        activeItem = item;
 
-            activeItem = item;
-            
-            // Get the current position before moving it in the code
-            const rect = item.getBoundingClientRect();
-            const zoneRect = dropZone.getBoundingClientRect();
+        const rect = item.getBoundingClientRect();
+        const zoneRect = dropZone.getBoundingClientRect();
 
-            // Calculate where the mouse is relative to the image
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
+        offsetX = clientX - rect.left;
+        offsetY = clientY - rect.top;
 
-            if (!item.classList.contains('freely-placed')) {
-                item.classList.add('freely-placed');
-                dropZone.appendChild(item); 
-            }
+        if (!item.classList.contains('freely-placed')) {
+            item.classList.add('freely-placed');
+            dropZone.appendChild(item);
+        }
 
-            // INSTANTLY position it so it doesn't "jump" to the bottom
-            item.style.left = `${e.clientX - zoneRect.left - offsetX}px`;
-            item.style.top = `${e.clientY - zoneRect.top - offsetY}px`;
-            item.style.zIndex = 1000;
-        });
-    });
+        item.style.left = `${clientX - zoneRect.left - offsetX}px`;
+        item.style.top = `${clientY - zoneRect.top - offsetY}px`;
+        item.style.zIndex = 1000;
+    }
 
-    document.addEventListener('mousemove', (e) => {
+    function moveDrag(clientX, clientY) {
         if (!activeItem) return;
 
         const zoneRect = dropZone.getBoundingClientRect();
-        
-        // Use pageX/pageY if your section is scrolled, or keep this if it's fullscreen
-        let newLeft = e.clientX - zoneRect.left - offsetX;
-        let newTop = e.clientY - zoneRect.top - offsetY;
+
+        let newLeft = clientX - zoneRect.left - offsetX;
+        let newTop = clientY - zoneRect.top - offsetY;
 
         activeItem.style.left = `${newLeft}px`;
         activeItem.style.top = `${newTop}px`;
+    }
+
+    function endDrag() {
+        activeItem = null;
+    }
+
+    draggables.forEach(item => {
+
+        item.addEventListener('dragstart', (e) => e.preventDefault());
+
+        /* DESKTOP */
+        item.addEventListener('mousedown', (e) => {
+            startDrag(item, e.clientX, e.clientY);
+        });
+
+        /* MOBILE */
+        item.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            startDrag(item, touch.clientX, touch.clientY);
+        });
+
     });
 
-    document.addEventListener('mouseup', () => {
-        if (activeItem) {
-            activeItem = null; 
-        }
+    /* DESKTOP */
+    document.addEventListener('mousemove', (e) => {
+        moveDrag(e.clientX, e.clientY);
     });
+
+    document.addEventListener('mouseup', endDrag);
+
+    /* MOBILE */
+    document.addEventListener('touchmove', (e) => {
+        if (!activeItem) return;
+
+        const touch = e.touches[0];
+        moveDrag(touch.clientX, touch.clientY);
+    });
+
+    document.addEventListener('touchend', endDrag);
 });
+
 
 /* --- UNLOCK MIX & MATCH LOGIC (ANY ANSWER) --- */
 document.addEventListener('DOMContentLoaded', () => {

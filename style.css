@@ -36,18 +36,19 @@ body {
 /* (Keep your existing .top-nav, .nav-menu, .info-section, and .black-box CSS exactly as they are below this!) */
 
 .top-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 50px;
-    background-color: rgba(0, 0, 0, 0.6); /* Adds the dark, transparent background back */
-    
-    /* The magic to make it follow you when you scroll: */
-    position: fixed; 
-    top: 0; 
-    left: 0;
-    width: 100%; 
-    box-sizing: border-box; /* Ensures the padding doesn't stretch it off the screen */
-    z-index: 99999; /* Higher than the overlay */
+display: flex;
+justify-content: space-between;
+align-items: center; /* Keeps logo and links aligned vertically */
+padding: 15px 50px;
+background-color: rgba(0, 0, 0, 0.8); /* Darker so it's readable */
+
+/* --- THE FIX: LOCK TO TOP --- */
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+z-index: 9999;
+box-sizing: border-box;
 }
 
 .nav-menu {
@@ -970,114 +971,159 @@ body.article-page .top-nav {
 
 
 /* ======================================================= */
-/* 📱 MOBILE RESPONSIVENESS (PERFECTED FOR PHONES) 📱        */
+/* 📱 ULTIMATE MOBILE FIX (PHONES) 📱                      */
 /* ======================================================= */
 
 @media (max-width: 768px) {
     
-    /* --- 1. Top Navigation & Hero --- */
     .top-nav {
-        flex-direction: column;
-        align-items: center;
-        padding: 15px;
-        gap: 15px;
+        flex-direction: column; 
+        padding: 15px 20px;
+        gap: 15px; /* Gives a little more breathing room between the FLUI logo and the buttons */
+        align-items: center; 
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
-    
-    .nav-menu {
+
+        .nav-menu {
+        display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
-        font-size: 0.85rem;
+    }
+
+    .nav-menu a {
+        text-align: center; /* Centers the text inside each pill */
+        display: block; /* Makes the entire box clickable, not just the text itself */
+        box-sizing: border-box; /* Ensures the padding and border don't break the grid */
+    }
+    /* 2. Fix Hero/Header Content */
+    .hero-content {
+        padding-top: 120px !important; /* Push content down so it doesn't hide under fixed navbar */
+        flex-direction: column;
+        text-align: center;
     }
 
     .hero-text-area h1 {
-        font-size: 3rem; /* Shrink giant hero title on mobile */
-        text-align: center;
-    }
-    .hero-text-area {
-        align-items: center; /* Center the social icons */
+        font-size: 2.2rem !important;
+        line-height: 1.1;
     }
 
-    /* --- 2. About Section (From Screenshot 1) --- */
-    .info-section {
-        flex-direction: column; /* Stacks the black boxes */
-        padding: 40px 20px; /* Reduce massive padding */
-        gap: 20px;
-    }
-    
-    .black-box {
-        padding: 30px 20px; /* Give the text more room to breathe */
-    }
-    
-    .black-box h2 {
-        font-size: 1.5rem; /* Shrink titles */
-    }
-    
-    .black-box p {
-        font-size: 0.95rem;
-        line-height: 1.4;
-    }
-
-    /* --- 3. Articles --- */
-    .article-section {
-        padding: 40px 20px;
-    }
-    
-    .readmore-title {
-        padding: 30px 20px;
-    }
-    
+    /* 3. Fix Giant Overlapping Article Titles (Screenshot Check) */
     .article-title {
-        font-size: 1.8rem; /* Stop text from overflowing the screen */
-        padding: 10px;
+        font-size: 1.4rem !important; /* Shrink from 2.5rem to fit mobile screen */
+        max-width: 95% !important;
+        line-height: 1.3 !important;
+        padding: 10px !important;
     }
 
-    /* --- 4. Quizzes (From Screenshot 3) --- */
-    .quiz-options {
-        grid-template-columns: 1fr; /* Forces A, B, C, D to stack perfectly on top of each other */
-        gap: 10px;
-    }
-    
-    .quiz-btn {
-        padding: 15px;
-        font-size: 0.95rem;
+    .readmore-tag {
+        font-size: 0.8rem !important;
+        padding: 5px 12px !important;
     }
 
-    /* --- 5. Mix & Match (From Screenshot 2) --- */
-    #mix-match-section {
-        padding: 20px 15px 50px 15px;
+    /* 4. Mix & Match Grid Fix */
+     #mix-match-section {
+        min-height: auto;
+        padding: 30px 15px 60px 15px;
+        background-attachment: scroll;
     }
 
+    /* STACK EVERYTHING */
     .mix-container.new-layout {
-        flex-direction: column; /* Puts the Model ON TOP of the Clothes */
-        align-items: center;
-        gap: 30px;
-    }
-
-    .mix-left-model {
-        width: 100%;
-        max-width: 250px; /* Keeps the model from being way too tall on mobile */
-        margin: 0 auto;
-    }
-
-    .mix-right-outfits {
+        flex-direction: column;
+        gap: 15px;
         width: 100%;
     }
 
-    .outfit-grid {
-        grid-template-columns: repeat(2, 1fr); /* Shows 2 items side-by-side instead of 3 */
-        gap: 10px;
+    /* TITLE */
+    .mix-title-badge {
+        padding: 10px 25px;
     }
 
-    /* Make the pill menu scrollable if it's too wide */
-    .category-nav {
+    .mix-title-badge h2 {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    /* CATEGORY BUTTONS */
+    .category-menu {
+        width: 100%;
+        max-width: 350px;
+        display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
+        padding: 12px;
+        border-radius: 25px;
     }
 
-    .category-btn {
-        padding: 8px 15px;
-        font-size: 0.8rem;
+    .cat-btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        flex: 1 1 40%;
+        min-width: 120px;
+    }
+
+    /* MODEL */
+    .silver-bevel {
+    width: 180px !important;
+    padding: 10px !important;
+    border-radius: 20px;
+    }
+
+    .base-model {
+        width: 100%;
+        max-height: 350px;
+        object-fit: contain;
+    }
+
+    /* CLOTH AREA */
+    .outfit-area {
+        width: 100%;
+        min-height: auto;
+    }
+
+    /* GRID */
+    .outfit-grid-free {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        width: 100%;
+        max-width: 280px;
+        justify-items: center;
+        margin: 0 auto;
+    }
+
+    .cloth-slot {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .outfit-item {
+        width: 120px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* DRAGGED CLOTHES */
+    .freely-placed {
+        width: 170px !important;
+        transform: scale(1.3);
+        z-index: 1000;
+    }
+
+    /* ARROWS */
+    .carousel-arrows {
+        margin-top: 20px;
+        gap: 40px;
+    }
+
+    .arrow {
+        font-size: 2rem;
     }
 }
