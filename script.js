@@ -149,11 +149,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* MOBILE */
     document.addEventListener('touchmove', (e) => {
-        if (!activeItem) return;
+    if (!activeItem) return;
 
-        const touch = e.touches[0];
-        moveDrag(touch.clientX, touch.clientY);
-    });
+    e.preventDefault(); // STOPS PAGE SCROLLING
+
+    const touch = e.touches[0];
+    moveDrag(touch.clientX, touch.clientY);
+    }, { passive: false });
 
     document.addEventListener('touchend', endDrag);
 });
