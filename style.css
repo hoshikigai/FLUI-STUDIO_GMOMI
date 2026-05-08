@@ -1112,12 +1112,12 @@ body.article-page .top-nav {
 
     /* DRAGGED CLOTHES */
     .freely-placed {
-        width: 100px !important;
+        width: 160px !important;
         transform: scale(1.2);
     }
 
     .pants-item.freely-placed {
-        width: 120px !important;
+        width: 135px !important;
     }
 
     /* ARROWS */
