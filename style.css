@@ -1068,10 +1068,10 @@ body.article-page .top-nav {
 
     /* MODEL */
     .silver-bevel {
-    width: 180px !important;
-    padding: 10px !important;
+    width: 230px !important;
+    padding: 12px !important;
     border-radius: 20px;
-    }
+    }  
 
     .base-model {
         width: 100%;
